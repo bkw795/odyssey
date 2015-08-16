@@ -1,0 +1,4 @@
+default:
+  username: default_test
+  email: test@odysseyapp.com
+  password_digest: <%= User.digest('password') %>

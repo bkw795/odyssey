@@ -17,4 +17,12 @@ class User < ActiveRecord::Base
   #   compute_hash, compare_with_password_digest
   #   returns either false or the User object
   # end
+
+  # Returns the hash digest of the given string.
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST :
+                                                  BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
+
 end
