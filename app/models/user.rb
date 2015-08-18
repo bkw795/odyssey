@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
   before_save { self.email = email.downcase }
+  after_create :assign_atlas
 
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   validates :username, :presence => true, :length => {:maximum => 25},
@@ -11,6 +12,7 @@ class User < ActiveRecord::Base
   validates :password, :length => { minimum: 6 }
 
   has_secure_password
+  has_one :atlas
 
   # has_secure_password adds this method, but I'm putting it here so I remember:
   # def authenticate( password )
@@ -24,5 +26,10 @@ class User < ActiveRecord::Base
                                                   BCrypt::Engine.cost
     BCrypt::Password.create(string, cost: cost)
   end
+
+  private
+    def assign_atlas
+      self.atlas = Atlas.create!()
+    end
 
 end
