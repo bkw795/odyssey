@@ -11,12 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150818012848) do
+ActiveRecord::Schema.define(version: 20151026212735) do
+
+  create_table "atlas_pages", force: :cascade do |t|
+    t.integer  "atlas_id"
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "public"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
 
   create_table "atlases", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "location_atlas_page_relationships", force: :cascade do |t|
+    t.integer "location_id"
+    t.integer "atlas_page_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "name"
+    t.float  "latitude"
+    t.float  "longitude"
+    t.string "address"
   end
 
   create_table "users", force: :cascade do |t|

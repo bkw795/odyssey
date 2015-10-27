@@ -1,4 +1,4 @@
-class AtlasesController < ApplicationContoller
+class AtlasesController < ApplicationController
 
   def show
     @atlas = Atlas.find( params[:id] )

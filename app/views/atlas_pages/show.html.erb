@@ -1,0 +1,8 @@
+<h1><%= @atlas_page.name %></h1>
+<h4>Locations</h4>
+<ul>
+<% @atlas_page.locations.each do |loc| %>
+  <li><%= link_to loc.name, loc %></li>
+<% end %>
+</ul>
+<%= link_to "Back to atlas", @atlas_page.atlas %>

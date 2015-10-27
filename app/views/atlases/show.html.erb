@@ -1,0 +1,6 @@
+<h1><%= @atlas.user.username %>'s Atlas</h1>
+<h4>Atlas Pages</h4>
+<% @atlas.atlas_pages.each do |ap| %>
+  <div><%= link_to ap.name, ap %></div>
+<% end %>
+<%= link_to "New Atlas Page", new_atlas_page_path, :class => "btn-success btn", :style => "margin-top: 30px;" %>
