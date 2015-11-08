@@ -1,5 +1,6 @@
 class AtlasPage < ActiveRecord::Base
   validates :name, :presence => true, :length => {:maximum => 25}
+  before_create :assign_color_code
 
   belongs_to :atlas
   has_many :location_atlas_page_relationships
@@ -33,4 +34,9 @@ class AtlasPage < ActiveRecord::Base
     self.public = true
     self.save
   end
+
+  def assign_color_code
+    self.color_code = "%06x" % (rand * 0xffffff)
+  end
+
 end

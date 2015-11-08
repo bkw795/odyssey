@@ -5,7 +5,11 @@ class AtlasesController < ApplicationController
   end
 
   def index
-    @atlases = Atlas.all
+    if logged_in?
+      redirect_to current_user.atlas
+    else
+      redirect_to signin_path
+    end
   end
 
 end

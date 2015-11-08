@@ -1,0 +1,6 @@
+
+<% @locations.all.each do |loc| %>
+  <%= link_to loc.name, loc %><br />
+<% end %>
+
+<%= link_to "Create New Location", new_location_path, :class => "btn btn-info", :style => "margin-top: 30px" %>

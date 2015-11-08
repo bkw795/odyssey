@@ -7,8 +7,9 @@
 	<% end %>
         <nav>
           <ul class="nav navbar-nav navbar-right">
-            <li><%= link_to "Home",   "#" %></li>
             <% if logged_in? %>
+            <li><%= link_to "My Atlas", current_user.atlas %></li>
+            <li><%= link_to "Locations", locations_path %></li>
             <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 Account <b class="caret"></b>

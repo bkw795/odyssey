@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151026212735) do
+ActiveRecord::Schema.define(version: 20151108143603) do
 
   create_table "atlas_pages", force: :cascade do |t|
     t.integer  "atlas_id"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20151026212735) do
     t.boolean  "public"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "color_code"
   end
 
   create_table "atlases", force: :cascade do |t|

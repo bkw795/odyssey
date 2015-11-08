@@ -5,10 +5,9 @@ module AtlasPageHelper
 
   def get_markers_for_page( atlas_page )
     markers = []
-    color_code = "%06x" % (rand * 0xffffff)
     atlas_page.locations.each do |loc|
       markers << {"lat": loc.latitude, "lng": loc.longitude,
-                  "picture": {"url": GOOGLE_MAPS_PIN_URL + color_code,
+                  "picture": {"url": GOOGLE_MAPS_PIN_URL + atlas_page.color_code,
                               "width": 32, "height": 32},
                   "infoWindow": loc.name + "\n" + loc.address}
     end
