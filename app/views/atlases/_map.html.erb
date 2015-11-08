@@ -1,0 +1,8 @@
+<script>
+handler = Gmaps.build('Google');
+handler.buildMap({ provider: {}, internal: {id: 'atlas-map'}}, function(){
+  markers = handler.addMarkers( <%= get_markers( @atlas ).html_safe %> );
+  handler.bounds.extendWith(markers);
+  handler.fitMapToBounds();
+});
+</script>
