@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151108143603) do
+ActiveRecord::Schema.define(version: 20151108221554) do
 
   create_table "atlas_pages", force: :cascade do |t|
     t.integer  "atlas_id"
@@ -39,6 +39,18 @@ ActiveRecord::Schema.define(version: 20151108143603) do
     t.float  "latitude"
     t.float  "longitude"
     t.string "address"
+  end
+
+  create_table "private_notes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "location_id"
+    t.text    "text"
+  end
+
+  create_table "public_tips", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "location_id"
+    t.text    "tip_text"
   end
 
   create_table "users", force: :cascade do |t|

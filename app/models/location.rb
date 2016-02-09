@@ -6,6 +6,8 @@ class Location < ActiveRecord::Base
 
   has_many :location_atlas_page_relationships
   has_many :atlas_pages, :through => :location_atlas_page_relationships
+  has_many :private_notes
+  has_many :public_tips
 
   def add_to_atlas_page( atlas_page_id )
     page = AtlasPage.find( atlas_page_id )

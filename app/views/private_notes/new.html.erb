@@ -1,0 +1,11 @@
+<h3>Private Note for <%= @location.name %></h3>
+
+<%= form_for [@location,@note] do |f| %>
+  <div class="form-group">
+    <%= f.label "Note" %>
+    <%= f.text_field :text, :class => "form-control" %>
+  </div>
+
+  <%= f.submit "Submit", :class => "btn btn-submit" %>
+
+<% end %>

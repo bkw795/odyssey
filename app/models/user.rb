@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
 
   has_secure_password
   has_one :atlas
+  has_many :private_notes
+  has_many :public_tips
 
   # has_secure_password adds this method, but I'm putting it here so I remember:
   # def authenticate( password )
