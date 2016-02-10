@@ -1,7 +1,7 @@
 <h1><%= @atlas.user.username %>'s Atlas</h1>
 <h4>Atlas Pages</h4>
 <% @atlas.atlas_pages.each do |ap| %>
-  <div><%= link_to ap.name, ap %></div>
+  <div><%= link_to ap.name, ap %> | <%= ap.description %></div>
 <% end %>
 
 <div class="map-container">

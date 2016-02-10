@@ -1,8 +1,16 @@
 <h1><%= @atlas_page.name %></h1>
+<h2><%= @atlas_page.description %></h2>
 <h4>Locations</h4>
 <ul>
 <% @atlas_page.locations.each do |loc| %>
   <li><%= link_to loc.name, loc %></li>
 <% end %>
 </ul>
-<%= link_to "Back to atlas", @atlas_page.atlas %>
+
+<% if @current_user %>
+  <% if @atlas_page.owned_by? @current_user %>
+    <%= link_to "Back to atlas", @atlas_page.atlas %>
+  <% else %>
+    <p>TODO: Add menu to copy atlas page to current_user's atlas</p>
+  <% end %>
+<% end %>

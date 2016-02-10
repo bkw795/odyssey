@@ -13,6 +13,7 @@ class AtlasPagesController < ApplicationController
       flash[:success] = "Atlas page #{params[:atlas_page][:name]} created successfully"
       redirect_to @current_user.atlas
     else
+      flash[:error] = @atlas_page.errors.full_messages
       render 'new'
     end
   end
@@ -23,7 +24,13 @@ class AtlasPagesController < ApplicationController
 
   def update
     @atlas_page = AtlasPage.find(params[:id])
-    
+    if @atlas_page.update_attributes( atlas_page_params )
+      flash[:success] = "Atlas page #{params[:atlas_page][:name]} updated successfully"
+      redirect_to @atlas_page
+    else
+      flash[:error] = @atlas_page.errors.full_messages
+      render 'edit'
+    end    
   end
 
   def show

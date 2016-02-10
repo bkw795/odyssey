@@ -1,18 +1,29 @@
 <h1><%= @location.name %></h1>
-<div>Address = <%= @location.address %></div>
+<h2 style="margin-top:-30px;"><%= @location.address %></h2>
+<p>TODO: Add logo and categories</p>
+
 <div>Latitude = <%= @location.latitude %></div>
 <div>Longitude = <%= @location.longitude %></div>
+
+<% if @current_user %>
+
 
 <div style="margin-top:30px;">
   <h3>Private Notes</h3>
   <% @location.private_notes.each do |pn| %>
     <p>- <%= pn.text %></p>
+    <p>TODO: Add a button to delete/edit private note</p>
   <% end %>
 
   <%= link_to "Add a private note", new_location_private_note_path(:location_id => @location.id)%>
 </div>
 
+<h3>In My Atlas Pages</h3>
+<p>TODO: List Atlas Pages that you've added this location to | Remove</p>
+<p>TODO: Add to Atlas Page button, select from existing pages, create new page</p>
 
 
-<div style="margin-top:30px;">TODO: Add this to atlas page</div>
-<div>TODO: Show popular public atlas pages with this location</div>
+<% end %>
+
+<h3>In Atlas Pages</h3>
+<p>TODO: List popular atlas pages that contain this location</p>

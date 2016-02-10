@@ -1,5 +1,7 @@
 class PrivateNotesController < ApplicationController
 
+  before_filter :require_current_user
+
   def show
     @note = PrivateNote.find( params[:id] )
     if @note.user != current_user
