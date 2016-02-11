@@ -25,6 +25,10 @@ class AtlasPage < ActiveRecord::Base
     self.public || true
   end
 
+  def can_be_read_by?( user )
+    return (self.public || self.owned_by?(user))
+  end
+
   def make_private!
     self.public = false
     self.save

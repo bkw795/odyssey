@@ -8,4 +8,8 @@ class Atlas < ActiveRecord::Base
     self.atlas_pages.push( atlas_page )
   end
 
+  def owned_by?( user )
+    self.user == user
+  end
+
 end

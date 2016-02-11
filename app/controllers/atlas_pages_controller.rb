@@ -1,6 +1,7 @@
 class AtlasPagesController < ApplicationController
 
   before_action :ensure_user, :only => [:edit, :update, :destroy]
+  before_action :ensure_viewable, :only => :show
 
   def new
     @atlas_page = AtlasPage.new
@@ -28,7 +29,7 @@ class AtlasPagesController < ApplicationController
       flash[:success] = "Atlas page #{params[:atlas_page][:name]} updated successfully"
       redirect_to @atlas_page
     else
-      flash[:error] = @atlas_page.errors.full_messages
+      flash.now[:error] = @atlas_page.errors.full_messages
       render 'edit'
     end    
   end
@@ -49,5 +50,13 @@ class AtlasPagesController < ApplicationController
     def ensure_user
       @atlas_page = AtlasPage.find(params[:id])
       return false if !(@atlas_page.owner == @current_user)
+    end
+
+    def ensure_viewable
+      @atlas_page = AtlasPage.find(params[:id])
+      if !@atlas_page.can_be_read_by?( @current_user )
+        flash[:error] = "You don't have permission to view that atlas page"
+        redirect_to root_path
+      end
     end
 end

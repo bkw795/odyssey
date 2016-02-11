@@ -14,4 +14,12 @@ class Location < ActiveRecord::Base
     self.atlas_pages.push( page )
   end
 
+  def notes_by( user )
+    self.private_notes.where( user: user )
+  end
+
+  def contained_in_user_atlas_pages( user )
+    user.atlas.atlas_pages.select{|ap| ap.locations.include?( self ) }
+  end
+
 end
