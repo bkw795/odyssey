@@ -1,0 +1,3 @@
+  <% @location.contained_in_user_atlas_pages( @current_user ).each do |ap| %>
+    <div><%= link_to ap.name, ap %> - <%= ap.description %> | Remove</div>
+  <% end %>

@@ -15,9 +15,14 @@
 </div>
 
 <h3>In My Atlas Pages</h3>
-<% @location.contained_in_user_atlas_pages( @current_user ).each do |ap| %>
-  <%= link_to ap.name, ap %> - <%= ap.description %> | Remove
-<% end %>
+<div id="in-atlas-pages">
+  <%= render 'list_atlas_pages' %>
+</div>
+<div style="margin-top:7px">
+  <%= link_to "Add to Atlas Page", "#addToAtlasPageModal", :class => "btn btn-primary", "data-toggle" => "modal" %>
+</div>
+<%= render 'add_to_atlas_page' %>
+
 <p>TODO: Add to Atlas Page button, select from existing pages, create new page</p>
 
 

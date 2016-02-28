@@ -1,7 +1,7 @@
 class PrivateNotesController < ApplicationController
 
   before_filter :require_current_user
-  before_filter :require_owner, :except => [:new, :create, :show]
+  before_filter :require_owner, :except => [:new, :create, :show, :index]
 
   def show
     @note = PrivateNote.find( params[:id] )
@@ -9,6 +9,11 @@ class PrivateNotesController < ApplicationController
       flash[:error] = "You don't have permission to view the requested note."
       redirect_to @note.location
     end
+  end
+
+  def index
+    @location = Location.find(params[:location_id])
+    @notes = PrivateNote.where( :user_id => @current_user.id, :location_id => params[:location_id] )
   end
 
   def new

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :locations do
     resources :private_notes
   end
+  resources :location_atlas_page_relationships
 
   get 'signup' => 'users#new'
   get 'signin' => 'sessions#new'

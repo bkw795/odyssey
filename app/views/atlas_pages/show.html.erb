@@ -3,7 +3,15 @@
 <h4>Locations</h4>
 <ul>
 <% @atlas_page.locations.each do |loc| %>
-  <li><%= link_to loc.name, loc %></li>
+  <li><%= link_to loc.name, loc %> |
+      <% if @current_user %>
+        <% if location_private_notes(loc, @current_user).count > 0 %>
+          <%= link_to "#{location_private_notes(loc, @current_user).count} notes", location_private_notes_path( :location_id => loc.id ) %>
+        <% else %>
+          <%= location_private_notes(loc, @current_user).count %> notes
+        <% end %>
+      <% end %>
+  </li>
 <% end %>
 </ul>
 

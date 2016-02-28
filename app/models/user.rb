@@ -29,6 +29,10 @@ class User < ActiveRecord::Base
     BCrypt::Password.create(string, cost: cost)
   end
 
+  def atlas_pages
+    self.atlas.atlas_pages
+  end
+
   private
     def assign_atlas
       self.atlas = Atlas.create!()

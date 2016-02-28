@@ -1,0 +1,23 @@
+<div class="modal fade" id="addToAtlasPageModal" role="dialog" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="vertical-alignment-helper">
+  <div class="modal-dialog vertical-align-center">
+  <div class="modal-content">
+  <%= form_for @location.location_atlas_page_relationships.new(:location_id => @location.id), :remote => true do |f| %>
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Add to Atlas Page</h3>
+  </div>
+  <div class="modal-body">
+<!-- RDEBUG: Need to remove the option to add to atlas pages that already contain this location -->
+      <div><%= f.select :atlas_page_id, options_from_collection_for_select(@current_user.atlas_pages, :id, :name) %></div>
+      <div><%= f.hidden_field :location_id %></div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+    <%= f.submit "Add to Atlas Page", :class => "btn btn-success" %>
+  </div>
+  <% end %>
+  </div>
+  </div>
+  </div>
+</div>
